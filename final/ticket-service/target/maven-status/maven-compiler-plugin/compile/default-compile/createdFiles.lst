@@ -1,7 +1,0 @@
-com\epam\training\ticketservice\core\movie\pesistence\entity\Movie.class
-com\epam\training\ticketservice\core\movie\pesistence\repository\MovieRepository.class
-com\epam\training\ticketservice\core\movie\impl\MovieServiceImpl.class
-com\epam\training\ticketservice\Application.class
-com\epam\training\ticketservice\core\movie\model\MovieDto$Builder.class
-com\epam\training\ticketservice\core\movie\model\MovieDto.class
-com\epam\training\ticketservice\core\movie\MovieService.class
