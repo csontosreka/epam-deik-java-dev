@@ -6,7 +6,6 @@ import com.epam.training.ticketservice.core.movie.pesistence.entity.Movie;
 import com.epam.training.ticketservice.core.movie.pesistence.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Currency;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

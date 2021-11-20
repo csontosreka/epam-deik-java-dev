@@ -1,14 +1,18 @@
 package com.epam.training.ticketservice.core.movie.pesistence.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
 public class Movie {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+    private Integer id;
     @Column(unique = true)
     private String title;
     private String genre;
@@ -24,11 +28,11 @@ public class Movie {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -57,24 +61,30 @@ public class Movie {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Movie movie = (Movie) o;
-        return Objects.equals(Id, movie.Id) && Objects.equals(title, movie.title) && Objects.equals(genre, movie.genre) && Objects.equals(movieLength, movie.movieLength);
+        return Objects.equals(id, movie.id) && Objects.equals(title, movie.title)
+                && Objects.equals(genre, movie.genre)
+                && Objects.equals(movieLength, movie.movieLength);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, title, genre, movieLength);
+        return Objects.hash(id, title, genre, movieLength);
     }
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "Id=" + Id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", movieLength=" + movieLength +
-                '}';
+        return "Movie{"
+                + "Id=" + id
+                + ", title='" + title + '\''
+                + ", genre='" + genre + '\''
+                + ", movieLength=" + movieLength
+                + '}';
     }
 }

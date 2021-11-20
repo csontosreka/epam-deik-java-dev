@@ -32,10 +32,15 @@ public class MovieDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         MovieDto movieDto = (MovieDto) o;
-        return Objects.equals(title, movieDto.title) && Objects.equals(genre, movieDto.genre) && Objects.equals(movieLength, movieDto.movieLength);
+        return Objects.equals(title, movieDto.title) && Objects.equals(genre, movieDto.genre)
+                && Objects.equals(movieLength, movieDto.movieLength);
     }
 
     @Override
@@ -45,11 +50,11 @@ public class MovieDto {
 
     @Override
     public String toString() {
-        return "MovieDto{" +
-                "name='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", movieLength=" + movieLength +
-                '}';
+        return "MovieDto{"
+                + "name='" + title + '\''
+                + ", genre='" + genre + '\''
+                + ", movieLength=" + movieLength
+                + '}';
     }
 
     public static class Builder {
