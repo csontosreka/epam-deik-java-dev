@@ -7,6 +7,7 @@ import com.epam.training.ticketservice.core.movie.pesistence.repository.MovieRep
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -30,8 +31,32 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void createMovie(MovieDto product) {
+    public void createMovie(MovieDto movieDto) {
+        Objects.requireNonNull(movieDto, "Movie cannot be null");
+        Objects.requireNonNull(movieDto.getTitle(), "Movie title cannot be null");
+        Objects.requireNonNull(movieDto.getGenre(), "Movie genre cannot be null");
+        Objects.requireNonNull(movieDto.getMovieLength(), "Movie length cannot be null");
+        Movie movie = new Movie(movieDto.getTitle(),
+                movieDto.getGenre(),
+                movieDto.getMovieLength());
+        movieRepository.save(movie);
+    }
 
+    @Override
+    public void updateMovie(MovieDto movieDto) {
+        Objects.requireNonNull(movieDto, "Movie cannot be null");
+        Objects.requireNonNull(movieDto.getTitle(), "Movie title cannot be null");
+        Movie movie = movieRepository.findByTitle(movieDto.getTitle())
+                .orElseThrow(() -> new IllegalArgumentException("Movie does not exist"));;
+        movie.setGenre(movieDto.getGenre());
+        movie.setMovieLength(movieDto.getMovieLength());
+        movieRepository.save(movie);
+    }
+
+    @Override
+    public void deleteMovie(String title) {
+        Objects.requireNonNull(title, "Movie does not exist");
+        movieRepository.deleteByTitle(title);
     }
 
     private MovieDto convertEntityToDto(Movie movie) {

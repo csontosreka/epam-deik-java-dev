@@ -50,11 +50,7 @@ public class MovieDto {
 
     @Override
     public String toString() {
-        return "MovieDto{"
-                + "name='" + title + '\''
-                + ", genre='" + genre + '\''
-                + ", movieLength=" + movieLength
-                + '}';
+        return title + " (" + genre + ", " + movieLength + ")";
     }
 
     public static class Builder {
