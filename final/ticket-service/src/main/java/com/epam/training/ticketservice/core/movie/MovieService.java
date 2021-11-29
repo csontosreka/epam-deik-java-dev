@@ -11,5 +11,10 @@ public interface MovieService {
 
     Optional<MovieDto> getMovieByName(String movieTitle);
 
-    void createMovie(MovieDto product);
+    void createMovie(MovieDto movie);
+
+    void updateMovie(MovieDto movie);
+
+    void deleteMovie(String title);
+
 }

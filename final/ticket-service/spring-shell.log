@@ -1,0 +1,108 @@
+1637517346038:sign in privileged admin admin
+1637517358418:describe account
+1637517365152:sign out
+1637517368966:exit
+1637956331251:help
+1637956352595:sign in privileged admin admin
+1637956366330:describe account
+1637956376286:sign out
+1637956396259:exit
+1637957109684:sign in privileged admin admin
+1637957135047:create movie SĂˇtĂˇntangĂł drĂˇma 95
+1637957190751:exit
+1637957378500:sign in privileged admin admin
+1637957386219:describe account
+1637957427911:create movie "Ă‰hezĹ‘k viadala" akciĂł 110
+1637957478802:sign in privileged admin admin
+1637957545050:sign in privileged account admin admin
+1637957558613:sign in privileged admin admin
+1637957583488:create movie "Ă‰hezĹ‘k viadala" akciĂł 124
+1637957615314:exit
+1637958027967:list movies
+1637958042396:exit
+1637959517491:list movies
+1637960802527:sign in privileged admin admin
+1637960831265:delete movie "Hunger Games"
+1637960861756:exit
+1637960887102:list movies
+1637960900368:sign in privileged admin admin
+1637960912706:delete movie "Hunger Games"
+1638011675490:list movies
+1638011683490:update movie
+1638011702784:sign in privileged admin admin
+1638011734984:update movie "Hunger Games" action 100
+1638011743390:list movies
+1638011770090:exit
+1638011980010:sign in privileged admin admin
+1638011986635:list movies
+1638012010604:update movie "Hunger Games" action 100
+1638012016369:list movies
+1638012757309:sign in privileged admin admin
+1638012774544:update movie "Hunger Games" action 100
+1638012779450:list movies
+1638012936760:sing out
+1638012942776:update movie
+1638012969724:update movie "Hunger Games" fantasy 100
+1638012977740:list movies
+1638013018257:help
+1638013066980:update movie "Hunger Games" action 100
+1638013071089:list movies
+1638013074495:sign out
+1638013092949:update movie "Hunger Games" fantasy 100
+1638013099481:exit
+1638013462500:exit
+1638013496290:delete movie "Spirited Away"
+1638013502994:help
+1638013523907:sign in privileged admin admin
+1638013546935:delete movie "Spirited Away"
+1638013570881:list movies
+1638013593463:delete movie "Hunger Games"
+1638013616087:exit
+1638013705716:list movies
+1638013716857:sign in privileged admin admin
+1638013732857:delete movie "Hunger Games"
+1638013932593:exit
+1638014029312:sign in privileged admin admin
+1638014042734:create movie IT horror 130
+1638014046921:list movies
+1638014054687:delete movie IT
+1638014060405:exit
+1638014219214:sign in privileged admin admin
+1638014226605:create movie IT horror 120
+1638014235573:delete movie IT
+1638020619791:exit
+1638020695651:sign in privileged admin admin
+1638020705341:create movie IT horror 100
+1638020712592:delete movie IT
+1638020773519:exit
+1638021058893:sing in privileged admin admin
+1638021067544:help
+1638021086836:sign in privileged admin admin
+1638021096226:create movie IT horror 100
+1638021103852:delete movie IT
+1638021117054:create movie IT horror 100
+1638021120149:list movies
+1638021129148:delete movie IT
+1638021132289:list movies
+1638021136727:exit
+1638021274296:sign in privileged admin admin
+1638021292812:update movie "Hunger Games" action 110
+1638021297654:list movies
+1638021462371:exit
+1638021552846:describe account
+1638021556424:exit
+1638021609060:sign in privileged admin admin
+1638021618674:delete movie "Hunger Games"
+1638021628926:list movies
+1638021641050:delete movie "Spirited Away"
+1638021645441:list movies
+1638021978589:exit
+1638022015738:sign in privileged admin admin
+1638022026989:delete movie "Hunger Games"
+1638022037677:delete movie "Spirited Away"
+1638022040848:list movies
+1638022419058:sign in privileged admin admin
+1638022431808:delete movie "Hunger Games"
+1638022445876:delete movie "Spirited Away"
+1638022450938:list movies
+1638022460648:exit
