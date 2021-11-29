@@ -106,3 +106,32 @@
 1638022445876:delete movie "Spirited Away"
 1638022450938:list movies
 1638022460648:exit
+1638186899634:list rooms
+1638186907202:exit
+1638188463810:list rooms
+1638188472982:sign in privileged admmin admin
+1638188481210:help
+1638188505772:sign in privileged admin admn
+1638188517973:sign in privileged admin admin
+1638188544863:create room Room1 10 10
+1638188570199:update room Room1 10 5
+1638188577433:list rooms
+1638188589276:delete room Room1
+1638188595702:exit
+1638199686076:list screenings
+1638199697217:sign in privileged admin admin
+1638199725858:create room R1 10 10
+1638199777661:create screening "Hunger Games" R1 2021-11-29 10:00
+1638199811848:create screening "Hunger Games" R1 "2021-11-29 10:00"
+1638199824458:list screenings
+1638199859223:delete screening "Hunger Games" R1 "2021-11-29 10:00"
+1638199945058:sign in privileged admin admin
+1638199953808:create room R1 10 10
+1638199977480:create screening "Hunger Games" R1 "2021-11-29 10:00"
+1638200010435:delete screening "Hunger Games" R1 "2021-11-29 10:00"
+1638200025154:exit
+1638200437069:sign in priveleged admin admin
+1638200450460:sign in privileged admin admin
+1638200489289:create screening "Hunger Games" R1 "2021-11-29 10:00"
+1638200513155:delete screening "Hunger Games" R1 "2021-11-29 10:00"
+1638200518234:exit
