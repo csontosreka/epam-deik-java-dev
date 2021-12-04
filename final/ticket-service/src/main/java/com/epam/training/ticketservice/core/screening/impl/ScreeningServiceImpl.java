@@ -33,19 +33,21 @@ public class ScreeningServiceImpl implements ScreeningService {
 
     @Override
     public List<ScreeningDto> getScreeningList() {
-        return screeningRepository.findAll().stream().map(this::convertEntityToDto)
+        return screeningRepository.findAll()
+                .stream()
+                .map(this::convertEntityToDto)
                 .collect(Collectors.toList());
     }
 
-    private List<ScreeningDto> getScreeningsByRoomName(String roomName) {
-        return screeningRepository.findByRoomName(roomName)
+    private List<ScreeningDto> getScreeningsByRoomName(String room) {
+        return screeningRepository.findByRoomName(room)
                 .stream()
                 .map(this::convertEntityToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Object createScreening(ScreeningDto screeningDto) {
+    public Optional<Screening> createScreening(ScreeningDto screeningDto) {
         Objects.requireNonNull(screeningDto, "Screening cannot be null");
         Objects.requireNonNull(screeningDto.getMovie().getTitle(), "Movie title cannot be null");
         Objects.requireNonNull(screeningDto.getRoom().getName(), "Room name cannot be null");
@@ -63,13 +65,13 @@ public class ScreeningServiceImpl implements ScreeningService {
                     && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength))
                     || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength)))) {
                 //System.out.println("There is an overlapping screening");
-                return "There is an overlapping screening";
+                throw new IllegalArgumentException("There is an overlapping screening");
 
             } else if (givenScreeningDate.isAfter(screeningStartDate.plusMinutes(screeningLength))
                     && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength + 10))
                     || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength + 10)))) {
                 //System.out.println("This would start in the break period after another screening in this room");
-                return "This would start in the break period after another screening in this room";
+                throw new IllegalArgumentException("This would start in the break period after another screening in this room");
             }
         }
 
@@ -77,7 +79,8 @@ public class ScreeningServiceImpl implements ScreeningService {
                 screeningDto.getMovie().getTitle(),
                 screeningDto.getRoom().getName(),
                 screeningDto.getScreeningDate());
-        return screeningRepository.save(newScreening);
+        screeningRepository.save(newScreening);
+        return Optional.of(newScreening);
     }
 
     @Override
@@ -90,15 +93,16 @@ public class ScreeningServiceImpl implements ScreeningService {
         Optional<MovieDto> movieDto = movieService.getMovieByName(screening.getMovieTitle());
         Optional<RoomDto> roomDto = roomService.getRoomByName(screening.getRoomName());
 
-        if (movieDto.isEmpty() || roomDto.isEmpty()) {
+        if (movieDto.isPresent() && roomDto.isPresent()) {
+            return ScreeningDto.builder()
+                    .withMovie(movieDto.get())
+                    .withRoom(roomDto.get())
+                    .withScreeningDate(screening.getScreeningDate())
+                    .build();
+        } else {
             throw new NullPointerException("Movie or room does not exist");
         }
 
-        return ScreeningDto.builder()
-                .withMovie(movieDto.get())
-                .withRoom(roomDto.get())
-                .withScreeningDate(screening.getScreeningDate())
-                .build();
     }
 
     private Optional<ScreeningDto> convertEntityToDto(Optional<Screening> screening) {

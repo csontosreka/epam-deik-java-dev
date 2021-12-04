@@ -142,4 +142,31 @@ class MovieServiceImplTest {
         // When - Then
         assertThrows(NullPointerException.class, () -> underTest.createMovie(movie));
     }
+
+    @Test
+    public void testUpdateMovieShouldThrowNullPointerExceptionWhenMovieIsNull() {
+        // Given - When - Then
+        assertThrows(NullPointerException.class, () -> underTest.updateMovie(null));
+    }
+
+    @Test
+    public void testUpdateMovieShouldThrowNullPointerExceptionWhenMovieNameIsNull() {
+        // Given
+        MovieDto movie = new MovieDto.Builder()
+                .withTitle(null)
+                .withGenre("action")
+                .withMovieLength(90)
+                .build();
+
+        // When - Then
+        assertThrows(NullPointerException.class, () -> underTest.updateMovie(movie));
+    }
+
+    @Test
+    public void testDeleteMovieShouldThrowNullPointerExceptionWhenMovieIsNull() {
+        // Given - When - Then
+        assertThrows(NullPointerException.class, () -> underTest.deleteMovie(null));
+    }
+
+
 }

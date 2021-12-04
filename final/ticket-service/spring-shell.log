@@ -135,3 +135,19 @@
 1638200489289:create screening "Hunger Games" R1 "2021-11-29 10:00"
 1638200513155:delete screening "Hunger Games" R1 "2021-11-29 10:00"
 1638200518234:exit
+1638364358465:list movies
+1638364361528:list rooms
+1638364368499:list screenings
+1638364380280:describe account
+1638364385685:exit
+1638623925151:list screenings
+1638623933361:exit
+1638624051219:list screenings
+1638624062745:exit
+1638638304179:list screenings
+1638638319303:sign in privileged admin admin
+1638638357856:create screening "IT" "R1" "2021-11-25 10:30"
+1638638400597:create screening "Hunger Games" "R1" "2021-11-25 10:30"
+1638638414041:exit
+1638648787370:list movies
+1638648791011:exit

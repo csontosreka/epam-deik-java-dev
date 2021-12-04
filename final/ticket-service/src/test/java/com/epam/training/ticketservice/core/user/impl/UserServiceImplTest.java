@@ -45,7 +45,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void testSigninShouldReturnOptionalEmptyWhenUsernameOrPasswordAreNotCorrect() {
+    public void testSignInShouldReturnOptionalEmptyWhenUsernameOrPasswordAreNotCorrect() {
         // Given
         Optional<UserDto> expected = Optional.empty();
         when(userRepository.findByUsernameAndPassword("dummy", "dummy")).thenReturn(Optional.empty());

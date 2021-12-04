@@ -17,13 +17,13 @@ class RoomServiceImplTest {
     private static final Room R1_ENTITY = new Room("R1", 10, 9);
     private static final Room R2_ENTITY = new Room("R2", 10, 10);
 
-    private final RoomDto R1_DTO = new RoomDto.Builder()
+    private final static RoomDto R1_DTO = new RoomDto.Builder()
             .withName(R1_ENTITY.getName())
             .withSeatRows(R1_ENTITY.getSeatRows())
             .withSeatCols(R1_ENTITY.getSeatCols())
             .build();
 
-    private final RoomDto R2_DTO = new RoomDto.Builder()
+    private final static RoomDto R2_DTO = new RoomDto.Builder()
             .withName(R2_ENTITY.getName())
             .withSeatRows(R2_ENTITY.getSeatRows())
             .withSeatCols(R2_ENTITY.getSeatCols())
