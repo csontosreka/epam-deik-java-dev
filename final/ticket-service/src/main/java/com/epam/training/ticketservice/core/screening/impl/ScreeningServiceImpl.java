@@ -54,25 +54,9 @@ public class ScreeningServiceImpl implements ScreeningService {
         Objects.requireNonNull(screeningDto.getScreeningDate(), "Screening date cannot be null");
 
         List<ScreeningDto> screeningsInGivenRoom = getScreeningsByRoomName(screeningDto.getRoom().getName());
-        LocalDateTime givenScreeningDate = screeningDto.getScreeningDate();
 
         for (var screening : screeningsInGivenRoom) {
-            LocalDateTime screeningStartDate = screening.getScreeningDate();
-            Integer screeningLength = screening.getMovie().getMovieLength();
-            Integer givenScreeningLength = screeningDto.getMovie().getMovieLength();
-
-            if (screeningStartDate.isAfter(givenScreeningDate.minusMinutes(givenScreeningLength + 10))
-                    && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength))
-                    || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength)))) {
-                //System.out.println("There is an overlapping screening");
-                throw new IllegalArgumentException("There is an overlapping screening");
-
-            } else if (givenScreeningDate.isAfter(screeningStartDate.plusMinutes(screeningLength))
-                    && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength + 10))
-                    || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength + 10)))) {
-                //System.out.println("This would start in the break period after another screening in this room");
-                throw new IllegalArgumentException("This would start in the break period after another screening in this room");
-            }
+            overlapChecker(screening, screeningDto);
         }
 
         Screening newScreening = new Screening(
@@ -81,6 +65,25 @@ public class ScreeningServiceImpl implements ScreeningService {
                 screeningDto.getScreeningDate());
         screeningRepository.save(newScreening);
         return Optional.of(newScreening);
+    }
+
+    private void overlapChecker(ScreeningDto screening, ScreeningDto givenScreeningDto) {
+        LocalDateTime screeningStartDate = screening.getScreeningDate();
+        Integer screeningLength = screening.getMovie().getMovieLength();
+        Integer givenScreeningLength = givenScreeningDto.getMovie().getMovieLength();
+        LocalDateTime givenScreeningDate = givenScreeningDto.getScreeningDate();
+
+        if (screeningStartDate.isAfter(givenScreeningDate.minusMinutes(givenScreeningLength + 10))
+                && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength))
+                || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength)))) {
+            throw new IllegalArgumentException("There is an overlapping screening");
+
+        } else if (givenScreeningDate.isAfter(screeningStartDate.plusMinutes(screeningLength))
+                && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength + 10))
+                || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength + 10)))) {
+            throw new IllegalArgumentException(
+                    "This would start in the break period after another screening in this room");
+        }
     }
 
     @Override

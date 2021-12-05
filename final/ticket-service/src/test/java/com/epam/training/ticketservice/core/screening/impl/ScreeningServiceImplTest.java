@@ -12,6 +12,7 @@ import com.epam.training.ticketservice.core.screening.model.ScreeningDto;
 import com.epam.training.ticketservice.core.screening.persistence.entity.Screening;
 import com.epam.training.ticketservice.core.screening.persistence.repository.ScreeningRepository;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -122,6 +123,38 @@ class ScreeningServiceImplTest {
     }
 
     @Test
+    void testCreateScreeningShouldThrowIllegalArgumentExceptionWhenScreeningsOverlap() {
+        // Given
+        Screening s1 = new Screening("IT", "R1", LocalDateTime.of(
+                2021,11,25, 10,0));
+        ScreeningDto s1Dto = new ScreeningDto.Builder()
+                .withMovie(movieDto)
+                .withRoom(roomDto)
+                .withScreeningDate(s1.getScreeningDate())
+                .build();
+
+        // When
+        when(underTest.createScreening(s1Dto)).thenThrow(IllegalArgumentException.class);
+
+        // Then
+        assertThrows(IllegalArgumentException.class, () -> underTest.createScreening(s1Dto));
+    }
+
+    @Test
+    void testCreateScreeningShouldCallOverlapChecker() {
+        // Given
+        Screening s1 = new Screening("IT", "R1", LocalDateTime.of(
+                2021,11,25, 10,0));
+        ScreeningDto s1Dto = new ScreeningDto.Builder()
+                .withMovie(movieDto)
+                .withRoom(roomDto)
+                .withScreeningDate(s1.getScreeningDate())
+                .build();
+        // When
+
+    }
+
+    @Test
     void testDeleteShouldCallScreeningRepositoryWhenScreeningExists() {
         //Given
 
@@ -131,6 +164,4 @@ class ScreeningServiceImplTest {
         verify(screeningRepository).deleteByMovieTitleAndRoomNameAndScreeningDate(movieDto.getTitle(), roomDto.getName(),
                 savedScreening.getScreeningDate());
     }
-
-
 }
