@@ -5,7 +5,6 @@ import com.epam.training.ticketservice.core.screening.persistence.entity.Screeni
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public interface ScreeningService {

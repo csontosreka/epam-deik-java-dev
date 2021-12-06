@@ -151,3 +151,28 @@
 1638638414041:exit
 1638648787370:list movies
 1638648791011:exit
+1638729481396:list screenings
+1638729489922:sign in privileged admin admin
+1638729546221:create screening "Hunger Games" "R1" "2021-11-25 10:00"
+1638729588720:create screening "Spirited Away" "R1" "2021-11-25 10:30"
+1638729685450:create screeming "Spirited Away" "R1" "2021-11-25 12:15"
+1638729721786:create screening "Spirited Away" "R1" "2021-11-25 12:15"
+1638729727849:exit
+1638794093611:sign in privileged admin admin
+1638794128294:create screening "Hunger Games" "R1" "2021-11-25 10:00"
+1638794140186:exit
+1638803603993:sign in privileged admin admin
+1638803608003:list screenings
+1638803639986:create screening "Hunger Games" "R1" "2021-11-25 10:00"
+1638803680817:list screenings
+1638803713094:delete screening "Hunger Games" "R1" "2021-11-25 10:00"
+1638803718613:list screenings
+1638803741624:create screening "" "" ""
+1638803753837:create screening
+1638803802220:create screening "Spirited Away" "R1" "2021-12-05 12:05"
+1638803807129:list screenings
+1638803840334:exit
+1638804076112:list screenings
+1638804085834:sign in privileged admin admin
+1638804099457:create screening asd
+1638804140574:create screening movie room date

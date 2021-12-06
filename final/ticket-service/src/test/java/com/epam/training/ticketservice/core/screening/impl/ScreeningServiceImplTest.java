@@ -11,9 +11,11 @@ import com.epam.training.ticketservice.core.room.persistence.repository.RoomRepo
 import com.epam.training.ticketservice.core.screening.model.ScreeningDto;
 import com.epam.training.ticketservice.core.screening.persistence.entity.Screening;
 import com.epam.training.ticketservice.core.screening.persistence.repository.ScreeningRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -140,17 +142,92 @@ class ScreeningServiceImplTest {
         assertThrows(IllegalArgumentException.class, () -> underTest.createScreening(s1Dto));
     }
 
+
     @Test
-    void testCreateScreeningShouldCallOverlapChecker() {
+    void testCreateScreeningShouldCallOverlapCheckerAndReturnNullPointerExceptionWhenMovieOrRoomNotExist() {
         // Given
-        Screening s1 = new Screening("IT", "R1", LocalDateTime.of(
-                2021,11,25, 10,0));
-        ScreeningDto s1Dto = new ScreeningDto.Builder()
+        ScreeningDto screeningDto = ScreeningDto.builder()
                 .withMovie(movieDto)
                 .withRoom(roomDto)
-                .withScreeningDate(s1.getScreeningDate())
+                .withScreeningDate(LocalDateTime.of(2021, 11, 25, 10, 0))
                 .build();
+        Screening s1 = new Screening("test", "R1", LocalDateTime.of(2021, 11, 25, 10, 0));
+
+        when(movieService.getMovieByName(movieDto.getTitle())).thenReturn(Optional.of(movieDto));
+        when(roomService.getRoomByName(roomDto.getName())).thenReturn(Optional.of(roomDto));
+        when(screeningRepository.findByRoomName(roomDto.getName())).thenReturn(List.of(s1));
+
         // When
+        Assertions.assertThrows(NullPointerException.class, () -> underTest.createScreening(screeningDto));
+
+        // Then
+        verifyNoMoreInteractions(movieRepository);
+
+    }
+
+    @Test
+    void testCreateScreeningShouldThrowIllegalArgumentExceptionWhenOverlapping() {
+        // Given
+        ScreeningDto screeningDto = ScreeningDto.builder()
+                .withMovie(movieDto)
+                .withRoom(roomDto)
+                .withScreeningDate(LocalDateTime.of(2021, 11, 25, 10, 0))
+                .build();
+        Screening s1 = new Screening("IT", "R1", LocalDateTime.of(2021, 11, 25, 10, 0));
+
+        when(movieService.getMovieByName(movieDto.getTitle())).thenReturn(Optional.of(movieDto));
+        when(roomService.getRoomByName(roomDto.getName())).thenReturn(Optional.of(roomDto));
+        when(screeningRepository.findByRoomName(roomDto.getName())).thenReturn(List.of(s1));
+
+        // When
+        Assertions.assertThrows(IllegalArgumentException.class, () -> underTest.createScreening(screeningDto));
+
+        // Then
+        verifyNoMoreInteractions(movieRepository);
+
+    }
+
+    @Test
+    void testCreateScreeningShouldThrowIllegalArgumentExceptionWhenOverlappingScreeningTime() {
+        // Given
+        ScreeningDto screeningDto = ScreeningDto.builder()
+                .withMovie(movieDto)
+                .withRoom(roomDto)
+                .withScreeningDate(LocalDateTime.of(2021, 11, 25, 12, 30))
+                .build();
+        Screening s1 = new Screening("IT", "R1", LocalDateTime.of(2021, 11, 25, 11, 41));
+
+        when(movieService.getMovieByName(movieDto.getTitle())).thenReturn(Optional.of(movieDto));
+        when(roomService.getRoomByName(roomDto.getName())).thenReturn(Optional.of(roomDto));
+        when(screeningRepository.findByRoomName(roomDto.getName())).thenReturn(List.of(s1, savedScreening));
+
+        // When
+        Assertions.assertThrows(IllegalArgumentException.class, () -> underTest.createScreening(screeningDto));
+
+        // Then
+        verifyNoMoreInteractions(movieRepository);
+
+    }
+
+    @Test
+    void testCreateScreeningShouldThrowIllegalArgumentExceptionWhenOverlappingBreakTime() {
+        // Given
+        ScreeningDto screeningDto = ScreeningDto.builder()
+                .withMovie(movieDto)
+                .withRoom(roomDto)
+                .withScreeningDate(LocalDateTime.of(2021, 11, 25, 9, 59))
+                .build();
+        Screening s1 = new Screening("IT", "R1", LocalDateTime.of(2021, 11, 25, 9, 59));
+
+        when(movieService.getMovieByName(movieDto.getTitle())).thenReturn(Optional.of(movieDto));
+        when(roomService.getRoomByName(roomDto.getName())).thenReturn(Optional.of(roomDto));
+        when(screeningRepository.findByRoomName(roomDto.getName())).thenReturn(List.of(s1, savedScreening));
+
+        // When
+        Assertions.assertThrows(IllegalArgumentException.class, () -> underTest.createScreening(screeningDto));
+
+        // Then
+        verifyNoMoreInteractions(movieRepository);
 
     }
 
