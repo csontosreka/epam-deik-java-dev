@@ -76,13 +76,13 @@ public class ScreeningServiceImpl implements ScreeningService {
         if (screeningStartDate.isAfter(givenScreeningDate.minusMinutes(givenScreeningLength + 10))
                 && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength))
                 || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength)))) {
-            throw new IllegalArgumentException("There is an overlapping screening");
+            throw new IllegalArgumentException("There is an overlapping screening".strip());
 
         } else if (givenScreeningDate.isAfter(screeningStartDate.plusMinutes(screeningLength))
                 && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength + 10))
                 || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength + 10)))) {
             throw new IllegalArgumentException(
-                    "This would start in the break period after another screening in this room");
+                    "This would start in the break period after another screening in this room".strip());
         }
     }
 

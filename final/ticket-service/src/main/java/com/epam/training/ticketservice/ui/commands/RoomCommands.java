@@ -1,7 +1,5 @@
 package com.epam.training.ticketservice.ui.commands;
 
-import com.epam.training.ticketservice.core.movie.MovieService;
-import com.epam.training.ticketservice.core.movie.model.MovieDto;
 import com.epam.training.ticketservice.core.room.RoomService;
 import com.epam.training.ticketservice.core.room.model.RoomDto;
 import com.epam.training.ticketservice.core.user.UserService;

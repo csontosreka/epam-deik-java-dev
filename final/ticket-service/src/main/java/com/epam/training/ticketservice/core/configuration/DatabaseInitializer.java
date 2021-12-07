@@ -32,22 +32,22 @@ public class DatabaseInitializer {
 
     @PostConstruct
     public void init() {
-        Movie spiritedAway = new Movie("Spirited Away", "animation", 125);
-        Movie hungerGames = new Movie("Hunger Games", "action", 130);
-        movieRepository.saveAll(List.of(spiritedAway, hungerGames));
+        //Movie spiritedAway = new Movie("Spirited Away", "animation", 125);
+        //Movie hungerGames = new Movie("Hunger Games", "action", 130);
+        //movieRepository.saveAll(List.of(spiritedAway, hungerGames));
 
         User admin = new User("admin", "admin", User.Role.ADMIN);
         userRepository.save(admin);
 
-        Room r1Room = new Room("R1", 10, 10);
-        Room r2Room = new Room("R2", 15, 10);
-        roomRepository.saveAll(List.of(r1Room, r2Room));
+        //Room r1Room = new Room("R1", 10, 10);
+        //Room r2Room = new Room("R2", 15, 10);
+        //roomRepository.saveAll(List.of(r1Room, r2Room));
 
-        Screening sc1 = new Screening("Hunger Games", "R1",
-                LocalDateTime.of(2021, 11, 25, 10, 0));
-        Screening sc2 = new Screening("Spirited Away", "R1",
-                LocalDateTime.of(2021, 12, 5, 12, 0));
-        screeningRepository.saveAll(List.of(sc1, sc2));
+        //Screening sc1 = new Screening("Hunger Games", "R1",
+        //        LocalDateTime.of(2021, 11, 25, 10, 0));
+        //Screening sc2 = new Screening("Spirited Away", "R1",
+        //        LocalDateTime.of(2021, 12, 5, 12, 0));
+        //screeningRepository.saveAll(List.of(sc1, sc2));
     }
 
 }
