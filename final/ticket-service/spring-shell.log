@@ -176,3 +176,23 @@
 1638804085834:sign in privileged admin admin
 1638804099457:create screening asd
 1638804140574:create screening movie room date
+1638819329519:list rooms
+1638819342963:sign in privileged admin admin
+1638819352302:delete room R1
+1638819364052:list rooms
+1638819369610:delete room R3
+1638819378224:exit
+1638819447384:sign in privileged admin admin
+1638819456313:delete room asd
+1638819462659:exit
+1638819714630:sign in privileged admin admin
+1638819721499:delete room sad
+1638819739027:exit
+1638821644819:sign in privileged admin admin
+1638821650361:delete room asd
+1638821861338:sign in privileged admin admin
+1638821866137:delete room
+1638821871603:exit
+1638872695976:sign in privileged admin admin
+1638872710437:describe account
+1638872721760:exit
