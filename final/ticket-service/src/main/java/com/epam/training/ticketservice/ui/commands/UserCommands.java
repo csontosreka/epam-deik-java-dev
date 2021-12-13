@@ -22,7 +22,7 @@ public class UserCommands {
         if (user.isEmpty()) {
             return "Login failed due to incorrect credentials";
         }
-        return "Signed in with privileged account" + user.get();
+        return "Signed in with privileged account " + user.get();
     }
 
     @ShellMethod(key = "sign out", value = "User sign out")
