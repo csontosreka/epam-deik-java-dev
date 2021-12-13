@@ -73,7 +73,7 @@ public class ScreeningServiceImpl implements ScreeningService {
         Integer givenScreeningLength = givenScreeningDto.getMovie().getMovieLength();
         LocalDateTime givenScreeningDate = givenScreeningDto.getScreeningDate();
 
-        if (screeningStartDate.isAfter(givenScreeningDate.minusMinutes(givenScreeningLength + 10))
+        if (givenScreeningDate.isAfter(screeningStartDate.minusMinutes(givenScreeningLength + 10))
                 && (givenScreeningDate.isBefore(screeningStartDate.plusMinutes(screeningLength))
                 || givenScreeningDate.isEqual(screeningStartDate.plusMinutes(screeningLength)))) {
             throw new IllegalArgumentException("There is an overlapping screening".strip());

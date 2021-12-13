@@ -196,3 +196,20 @@
 1638872695976:sign in privileged admin admin
 1638872710437:describe account
 1638872721760:exit
+1639408295379:sign in privileged admin admin
+1639408354443:create screening SĂˇtĂˇntangĂł Perdesoli "2021-03-15 10:45"
+1639408377938:create room Perdesoli 20 10
+1639408408262:create movie SĂˇtĂˇntangĂł drama 450
+1639408432038:create movie "Spirited Away" animation 125
+1639408488642:create screening SĂˇtĂˇntangĂł Perdesoli "2021-03-15 10:45"
+1639408535574:create screening "Spirited Away" Perdesoli "2021-13-14 16:00"
+1639408576732:create screening "Spirited Away" Perdesoli "2021-03-14 16:00"
+1639408609936:list screenings
+1639409191485:exit
+1639409247705:sign in privileged admin admin
+1639409269615:create room Pedersoli 20 10
+1639409290214:create movie SĂˇtĂˇntangĂł drama 450
+1639409308592:create movie "Spirited Away" animation 125
+1639409342295:create screening SĂˇtĂˇntangĂł Pedersoli "2021-03-15 10:45"
+1639409381861:create screening "Spirited Away" Pedersoli "2021-03-14 16:00"
+1639409388440:exit
